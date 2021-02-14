@@ -6,19 +6,16 @@ if(!empty($_GET['error'])){
         echo "<script>alert('錯誤:下檔日不得比上映日早')</script>";
     }
 }
-if(!empty($_GET['notice'])&& $_GET['notice']=="sus"){
-    echo "<script>alert('新增成功!可至電影管理進行更多編輯!')</script>";
-
-}
+$m=$Movie->find($_GET['movie']);
 
 ?>
-<h3 class="col-12 text-center">新增電影</h3>
+<h3 class="col-12 text-center">編輯電影</h3>
 
-<form action="api/addmovie.php" enctype="multipart/form-data" method="post">
+<form action="api/editmovie.php" enctype="multipart/form-data" method="post">
 <table >
     <tr>
         <td>片名</td>
-        <td><input type="text" name="name" id="name"></td>
+        <td><input type="text" name="name" id="name" value="<?=$m['name'];?>"></td>
     </tr>
     <tr>
         <td>海報</td>
@@ -26,30 +23,43 @@ if(!empty($_GET['notice'])&& $_GET['notice']=="sus"){
     </tr>
     <tr>
         <td>上映日</td>
-        <td><input type="date" name="onday" id="onday"></td>
+        <td><input type="date" name="onday" id="onday"  value="<?=$m['onday'];?>"></td>
     </tr>
     <tr>
         <td>下檔日</td>
-        <td><input type="date" name="offday" id="offday"></td>
+        <td><input type="date" name="offday" id="offday"   value="<?=$m['offday'];?>"></td>
     </tr>
     <tr>
         <td>主演</td>
         <td id="starTd" >
-            <div id="star1" >
-            <input class="mb-2" type="text" name="star[]">
+            
+                <?php
+                $stars=explode(",",$m['star']);
+                foreach ($stars as  $key=>$star) {
+                ?>
+                <div id="star<?=$key;?>" >
+                <input class="mb-2" type="text" name="star[]" value="<?=$star;?>">
+                <input type="button" onclick="delstar('#star<?=$key;?>')"  value="刪除">
+            </div>
+                <?php
+                }
+
+                ?>
+            
             <input type="button" onclick="addstar()" value="更多主演">
-        </div>
+        
             
     
     </td>
     </tr>
     <tr>
         <td>簡介</td>
-        <td><textarea name="inform" id="inform" cols="30" rows="10"></textarea></td>
+        <td><textarea name="inform" id="inform" cols="30" rows="10"  ><?=$m['inform'];?></textarea></td>
     </tr>
 </table>
 <div class="d-flex justify-content-center">
-<input  class="btn btn-primary m-3"type="submit" value="新增">
+    <input type="hidden" name="id" value="<?=$_GET['movie'];?>">
+<input  class="btn btn-primary m-3"type="submit" value="修改">
 <input  class="btn btn-primary m-3"type="reset" value="重置"></div>
 </form>
 <script>
@@ -63,6 +73,6 @@ if(!empty($_GET['notice'])&& $_GET['notice']=="sus"){
     }
     function delstar(star,btn){
         $(star).remove();
-        // $(btn).hide();
+        
     }
 </script>

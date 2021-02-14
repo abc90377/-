@@ -16,9 +16,13 @@
     <!-- Load fonts style after rendering the layout styles -->
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Roboto:wght@100;200;300;400;500;700;900&display=swap">
     <link rel="stylesheet" href="assets/css/fontawesome.min.css">
+    <script src="https://code.jquery.com/jquery-3.5.1.min.js" integrity="sha256-9/aliU8dGd2tb6OSsuzixeV4y/faTqgFtohetphbbj0=" crossorigin="anonymous"></script>
 
 </head>
+<?php
+include_once("base.php");
 
+?>
 <body>
     <!-- Start Top Nav -->
     <nav class="navbar navbar-expand-lg bg-dark navbar-light d-none d-lg-block" id="templatemo_nav_top">
@@ -88,7 +92,7 @@
                 <a href="?do=book">訂單管理</a>
 
             </div><hr>
-            <div class="content d-flex justify-content-center">
+            <div class="content d-flex flex-wrap justify-content-center">
                 <?php
                 $file = (!empty($_GET['do'])) ? $_GET['do'] : "main";
                 include("back/$file.php");
