@@ -46,7 +46,7 @@ include_once("base.php");
     <nav class="navbar navbar-expand-lg navbar-light shadow">
         <div class="container d-flex justify-content-between align-items-center">
 
-            <a class="navbar-brand text-success logo h1 align-self-center" href="index.html">
+            <a class="navbar-brand text-success logo h1 align-self-center" href="index.php">
                 Movie
             </a>
 
@@ -58,13 +58,13 @@ include_once("base.php");
                 <div class="flex-fill">
                     <ul class="nav navbar-nav d-flex justify-content-between mx-lg-auto">
                         <li class="nav-item">
-                            <a class="nav-link" href="index.html">首頁</a>
+                            <a class="nav-link" href="index.php">首頁</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="book.html">立即購票</a>
+                            <a class="nav-link" href="index.php?do=book">立即購票</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="movies.html">電影一覽</a>
+                            <a class="nav-link" href="index.php?do=movies">電影一覽</a>
                         </li>
                         <li class="nav-item">
                             <a class="nav-link" href="backend.php">後臺管理</a>
