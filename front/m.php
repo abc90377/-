@@ -22,7 +22,7 @@ $m = $Movie->find($_GET['movie']);
                 <div class="card">
                     <div class="card-body">
                         <h1 class="h2"><?= $m['name']; ?></h1>
-                        <p class="h3 py-2 text-muted">2021-1-1</p>
+                        <p class="h3 py-2 text-muted"><?= $m['onday'] ?></p>
 
 
                         <h6>劇情簡介:</h6>
@@ -42,7 +42,21 @@ $m = $Movie->find($_GET['movie']);
 
                         <div class="row pb-3">
                             <div class="col-6 d-grid">
-                                <a href="?do=book&m=<?= $_GET['movie']; ?>"><button class="btn btn-success btn-lg w-100">去訂票</button></a>
+                                <?php
+                                if (strtotime($m['onday']) < strtotime("+3day")) {
+                                ?>
+                                    <a href="?do=book&m=<?= $_GET['movie']; ?>"><button class="btn btn-success btn-lg w-100">去訂票</button></a>
+
+                                <?php
+                                } else {
+
+                                ?>
+                                    <button class="btn btn-danger btn-lg w-100">尚未開放訂票</button>
+
+                                <?php
+                                }
+
+                                ?>
                             </div>
                             <div class="col-6 d-grid">
                                 <a href="?do=movies"><button class="btn btn-success btn-lg w-100">返回</button></a>

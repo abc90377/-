@@ -89,7 +89,7 @@ include_once("base.php");
             <div class="navchose d-flex justify-content-around">
                 <a href="?do=main">電影上架</a>
                 <a href="?do=movie">電影管理</a>
-                <a href="?do=book">訂單管理</a>
+                
 
             </div><hr>
             <div class="content d-flex flex-wrap justify-content-center">

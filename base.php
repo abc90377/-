@@ -26,6 +26,7 @@ class DB{
         if(isset($arg[1])){
             $sql .= $arg[1];
         }
+        // echo $sql;
         return $this->pdo->query($sql)->fetchAll();
     }
     function count(...$arg){
@@ -91,4 +92,12 @@ function to($url){
     header("location:".$url);
 }
 $Movie=new DB("movie");
+$Book=new DB("book");
+$sess=[
+    1=>"10:00~12:00",
+    2=>"12:00~14:00",
+    3=>"14:00~16:00",
+    4=>"16:00~18:00",
+    5=>"18:00~20:00",
+    ];
 ?>

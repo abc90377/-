@@ -67,6 +67,9 @@ include_once("base.php");
                             <a class="nav-link" href="?do=movies">電影一覽</a>
                         </li>
                         <li class="nav-item">
+                            <a class="nav-link" href="?do=searchBook">訂票查詢</a>
+                        </li>
+                        <li class="nav-item">
                             <a class="nav-link" href="backend.php">後臺管理</a>
                         </li>
                     </ul>
